@@ -16,7 +16,7 @@ the Client ID and Client Secret (See https://1up.health/dev/doc/user-management)
 
 Note: Ensure to register a new application with the port to be used for the Node server (i.e 1uphealth_react_server), which is 3200 by default.
 
-  Once you obtain a client id and a client secret, add these to the following config files:
+  Once you obtain a client id and a client secret, add these to the following config files (and the desired system Id):
   
      1uphealth_react_server/config/config.development.json
      1uphealth_react_client/src/config/config.development.json
@@ -43,7 +43,7 @@ This repositiry contains two folders, one for the React client-side application 
    
       - Verify a button displays "Connect to Health System"
       - Click the button, the application should redirect you to the URL:
-          - "https://api.1up.health/connect/system/clinical/4707?client_id={client_id}&access_token={access_token}"
+          - "https://api.1up.health/connect/system/clinical/{system_id}?client_id={client_id}&access_token={access_token}"
           
       - Submit the prompted credentials for the test user
           - The page should load and attempt to redirect back to localhost:3500 but you must navigate yourself back to localhost:3200
