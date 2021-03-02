@@ -18,8 +18,8 @@ Note: Ensure to register a new application with the port to be used for the Node
 
   Once you obtain a client id and a client secret, add these to the following config files:
   
-    1- 1uphealth_react_server/config/config.development.json
-    2- 1uphealth_react_client/src/config/config.development.json
+     1uphealth_react_server/config/config.development.json
+     1uphealth_react_client/src/config/config.development.json
 
 
 **To execute:**
