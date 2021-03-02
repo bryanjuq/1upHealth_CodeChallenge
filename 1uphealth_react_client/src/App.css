@@ -1,0 +1,49 @@
+.oneUp-container {
+  width: 960px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+table.patient-table {
+    width: 100%;
+}
+table.patient-table tr td {
+    padding: 15px;
+    border-top: solid 1.5px darkgrey;
+}
+table.patient-table tr td:first-child {
+    width: 25%;
+}
+table.patient-table tr td:nth-child(2) {
+    width: 75%;
+}
+
+table.patient-table label {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+table.patient-table span {
+    display: flex;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+.contanct-info {
+    display: flex;
+}
+
+.contanct-info label {
+    display: flex;
+}
+
+.connect-button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
