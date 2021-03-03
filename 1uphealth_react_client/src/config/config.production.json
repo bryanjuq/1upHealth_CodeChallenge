@@ -1,6 +1,7 @@
 {
     "client_id": "",
     "client_secret": "",
-    "port": 3500,
-    "system_id": "4707"
+    "port": 3200,
+    "system_id": "",
+    "node_server_port": "3500"
 }

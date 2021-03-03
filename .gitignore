@@ -105,3 +105,4 @@ dist
 
 config.development.json
 .DS_Store
+.vscode/

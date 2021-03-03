@@ -1,5 +1,6 @@
 {
+    "app_user_id": "",
     "client_id": "",
     "client_secret": "",
-    "port": 3200
+    "port": 3500
 }
