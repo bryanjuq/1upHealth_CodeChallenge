@@ -6,7 +6,7 @@ Code challenge using React and Node.
 This is a very basic Node application that makes use of the 1upHealth API to display
 a patient's information obtained via the $everything query against the
 FHIR API. The application makes use of React to render the
-data elements and Node to stablish a session with 1upHealth API to ultimately serve the requested patient data.
+data elements and Node to establish a session with 1upHealth API to ultimately serve the requested patient data.
 
 
 
@@ -26,7 +26,7 @@ Once you obtain a value for client_id and client_secret, ensure to fill up the f
 
 **To execute:**
 
-This repositiry contains two folders, one for the React client-side application and one for the Node server application.
+This repository contains two directories, one for the React client-side application and one for the Node server application.
 Implementation note: The right approach should be to have the Node server "serve" the React application.
 
    1- Run the 1uphealth_react_server:
