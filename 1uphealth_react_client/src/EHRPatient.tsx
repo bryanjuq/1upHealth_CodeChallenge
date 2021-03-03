@@ -7,8 +7,8 @@ export default function EHRPatient(props: any) {
         <div>
             {
                 patient.length > 0 &&
-                patient[0].entry.map((entry: any) => {
-                    return <section className={"data-section"} dangerouslySetInnerHTML={{ __html: entry.resource.text.div }}></section>
+                patient[0].entry.map((entry: any, index: number) => {
+                    return <section key={index} className={"data-section"} dangerouslySetInnerHTML={{ __html: entry.resource.text.div }}></section>
                 })
             }
         </div>
