@@ -12,15 +12,45 @@ export default function App() {
     let [access_token, setAccessToken]: any =  useState('');
 
     useEffect(() => {
-        const fetchPatient = async () => {
-            const token = await (await fetch(accessTokenURL)).json();
-            setAccessToken(token.token);
-            const patientEntry = await (await fetch(patientURL)).json();
-            const patientId = await patientEntry.entry[0].resource.id;
-            const patientData = await (await fetch(patientSpecificURL.replace("{patientId}", patientId))).json();
-            setPatient([patientData]);
+        const getToken  = async () => {
+            fetch(accessTokenURL)
+            .then((tokenResponse) => {
+                return tokenResponse.json();
+            })
+            .then((tokenJson) => {
+                setAccessToken(tokenJson.token);
+                fetchPatient();
+            })
+            .catch((error) => {
+                console.log("Error getting token: " + error);
+            });
         };
-        fetchPatient();
+
+        const fetchPatient = async () => {
+            fetch(patientURL)
+            .then((patientResponse) => {
+                return patientResponse.json();
+            })
+            .then((patientJson) => {
+                return patientJson.entry[0].resource.id;
+            })
+            .then(patientId => {
+                fetch(patientSpecificURL.replace("{patientId}", patientId))
+                .then((patientResponse) => {
+                    return patientResponse.json();
+                })
+                .then((patientDataJson) => {
+                    setPatient([patientDataJson]);
+                })
+                .catch((error) => {
+                    console.log("Error getting patient data: " + error);
+                })
+             })
+             .catch(error => {
+                console.log("Error getting patient: " + error);
+             });
+        };
+         getToken();
     }, []);
 
     const connectHealthSystemURL = `https://api.1up.health/connect/system/clinical/${config.system_id}?client_id=${config.client_id}&access_token=${access_token}`;
