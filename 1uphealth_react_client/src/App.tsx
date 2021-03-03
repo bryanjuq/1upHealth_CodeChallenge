@@ -3,13 +3,18 @@ import EHRPatient from './EHRPatient';
 import './App.css';
 
 const config = require("./config")();
-const patientURL = "http://localhost:3200/patient";
-const patientSpecificURL = "http://localhost:3200/patient/{patientId}";
+const accessTokenURL = `http://localhost:${config.node_server_port}/access_token`;
+const patientURL = `http://localhost:${config.node_server_port}/patient`;
+const patientSpecificURL = `http://localhost:${config.node_server_port}/patient/{patientId}`;
 
 export default function App() {
     let [patient, setPatient]: any = useState([]);
+    let [access_token, setAccessToken]: any =  useState('');
+
     useEffect(() => {
         const fetchPatient = async () => {
+            const token = await (await fetch(accessTokenURL)).json();
+            setAccessToken(token.token);
             const patientEntry = await (await fetch(patientURL)).json();
             const patientId = await patientEntry.entry[0].resource.id;
             const patientData = await (await fetch(patientSpecificURL.replace("{patientId}", patientId))).json();
@@ -18,11 +23,7 @@ export default function App() {
         fetchPatient();
     }, []);
 
-    let connectHealthSystemURL = "https://api.1up.health/connect/system/clinical/{system_id}?client_id={client_id}&access_token={access_token}";
-    connectHealthSystemURL = connectHealthSystemURL
-        .replace("{system_id}", config.system_id)
-        .replace("{client_id}", config.client_id)
-        .replace("{access_token}", config.access_token);
+    const connectHealthSystemURL = `https://api.1up.health/connect/system/clinical/${config.system_id}?client_id=${config.client_id}&access_token=${access_token}`;
     return (
         <div className="App">
             <div className="oneUp-container">
